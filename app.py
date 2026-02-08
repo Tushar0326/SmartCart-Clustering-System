@@ -12,12 +12,12 @@ from sklearn.metrics import accuracy_score
 # Page Config
 # --------------------------------------------------
 st.set_page_config(
-    page_title="SmartCart – Purchase Prediction",
-    page_icon="🛒",
+    page_title="SmartCart â Purchase Prediction",
+    page_icon="ð",
     layout="centered"
 )
 
-st.title("🛒 SmartCart – Customer Purchase Prediction")
+st.title("ð SmartCart â Customer Purchase Prediction")
 st.write(
     "Predict whether a customer is likely to complete a purchase based on their browsing behavior."
 )
@@ -32,13 +32,13 @@ def load_data():
 
 df = load_data()
 
-st.subheader("📊 Dataset Preview")
+st.subheader("ð Dataset Preview")
 st.dataframe(df.head())
 
 # --------------------------------------------------
 # Target & Features
 # --------------------------------------------------
-# ⚠️ CHANGE THIS if your column name is different
+# â ï¸ CHANGE THIS if your column name is different
 TARGET_COLUMN = "Purchase"  # example: 0 = No, 1 = Yes
 
 X = df.drop(columns=[TARGET_COLUMN])
@@ -69,12 +69,12 @@ def train_model(X, y):
 
 model, accuracy = train_model(X, y)
 
-st.success(f"✅ Model trained successfully | Accuracy: **{accuracy:.2f}**")
+st.success(f"â Model trained successfully | Accuracy: **{accuracy:.2f}**")
 
 # --------------------------------------------------
 # User Input Section
 # --------------------------------------------------
-st.subheader("🧾 Enter Customer Session Details")
+st.subheader("ð§¾ Enter Customer Session Details")
 
 user_input = {}
 
@@ -95,16 +95,16 @@ input_df = pd.DataFrame([user_input])
 # --------------------------------------------------
 # Prediction
 # --------------------------------------------------
-st.subheader("🔮 Prediction Result")
+st.subheader("ð® Prediction Result")
 
 if st.button("Predict Purchase"):
     prediction = model.predict(input_df)[0]
     probability = model.predict_proba(input_df)[0][1]
 
     if prediction == 1:
-        st.success("🟢 Customer is **LIKELY** to make a purchase")
+        st.success("ð¢ Customer is **LIKELY** to make a purchase")
     else:
-        st.error("🔴 Customer is **UNLIKELY** to make a purchase")
+        st.error("ð´ Customer is **UNLIKELY** to make a purchase")
 
     st.metric(
         label="Purchase Probability",
@@ -115,4 +115,4 @@ if st.button("Predict Purchase"):
 # Footer
 # --------------------------------------------------
 st.markdown("---")
-st.caption("Built with ❤️ using Streamlit | SmartCart Project")
+st.caption("Built with â¤ï¸ using Streamlit | SmartCart Project")
